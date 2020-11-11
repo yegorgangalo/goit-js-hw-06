@@ -15,10 +15,17 @@ const getSortedUniqueSkills = users => {
     //     .reduce((arraySkills, user) => arraySkills = [...arraySkills, ...user.skills], []);
     // return [... new Set(allSkillsArray)].sort();
 
-    return users
-        .reduce((arraySkills, user) => arraySkills = [...arraySkills, ...user.skills], [])
+    // const uniqueSkills = [...users]
+    //     .reduce((arraySkills, user) => arraySkills = [...arraySkills, ...user.skills], [])
+    //     .reduce((unique, skill) => unique.includes(skill) ? unique : [...unique, skill], [])
+    //     .sort();
+    // return uniqueSkills;
+
+    const uniqueSkills = [...users]
+        .reduce((arraySkills, {skills}) => arraySkills = [...arraySkills, ...skills], [])
         .reduce((unique, skill) => unique.includes(skill) ? unique : [...unique, skill], [])
         .sort();
+    return uniqueSkills;
 };
 
 console.log(getSortedUniqueSkills(users));
